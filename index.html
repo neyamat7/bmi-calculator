@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>bmi calculator</title>
+    <!-- google font -->
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+    </style>
+
+    <!-- tailwind css cdn -->
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <!-- tailwind custom theme variable -->
+    <style type="text/tailwindcss">
+      @theme {
+        --color-main: #6c63ff;
+        --color-secondary: #081854;
+        --color-light: #ffffff;
+        --font-play: "Play", serif;
+      }
+    </style>
+  </head>
+  <body class="font-play">
+    <main class="max-w-screen-lg mx-auto flex justify-center mt-20">
+      <!-- input section  -->
+      <section class="bg-[#F4F3FF] max-w-[400px] p-5 rounded-3xl">
+        <h1 class="text-center text-3xl mb-14">BMI CALCULATOR</h1>
+
+        <div class="space-y-10">
+          <!-- age and weight -->
+          <div class="flex justify-between gap-5">
+            <!-- age -->
+            <div
+              class="bg-light flex flex-col gap-2 p-3 items-center rounded-xl"
+            >
+              <p class="text-base">Age</p>
+              <div>
+                <input
+                  class="text-5xl text-main font-bold text-center w-full border-none outline-none"
+                  placeholder="0"
+                  type="text"
+                  value="30"
+                />
+              </div>
+              <div
+                class="text-3xl font-bold flex justify-between gap-8 items-center text-light"
+              >
+                <span
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  >-</span
+                >
+                <span
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  >+</span
+                >
+              </div>
+            </div>
+
+            <!-- weight -->
+            <div
+              class="bg-light flex flex-col gap-2 p-3 items-center rounded-xl"
+            >
+              <p class="text-base">Weight (KG)</p>
+              <div>
+                <input
+                  class="text-5xl text-main font-bold text-center w-full border-none outline-none"
+                  placeholder="0"
+                  type="text"
+                  value="78"
+                />
+              </div>
+              <div
+                class="text-3xl font-bold flex justify-between gap-8 items-center text-light"
+              >
+                <span
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  >-</span
+                >
+                <span
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  >+</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- height -->
+          <div class="w-full bg-light flex flex-col p-5 rounded-xl">
+            <p class="text-base text-center">Height (CM)</p>
+
+            <div>
+              <input
+                class="text-6xl text-main font-bold text-center w-full border-none outline-none"
+                placeholder="0"
+                type="text"
+                value="175"
+              />
+            </div>
+
+            <!-- progress bar -->
+            <!-- progress bar container -->
+            <div class="h-1 mt-3 bg-[#d2d1dc]">
+              <!-- progress-circle-bar -->
+              <div class="w-8 h-8 bg-main -translate-y-1/2 rounded-full"></div>
+            </div>
+            <div class="mt-5 flex justify-between text-sm">
+              <span>50cm</span>
+              <span>300cm</span>
+            </div>
+          </div>
+
+          <!-- gender -->
+          <div>
+            <p>Gender</p>
+            <div>
+              <span>Male</span>
+              <div>
+                <!-- toggle circle -->
+                <div></div>
+              </div>
+              <span>Female</span>
+            </div>
+          </div>
+
+          <!-- submit button -->
+          <button
+            class="btn bg-main text-light text-xl rounded-md w-full mt-12 py-3"
+          >
+            Calculate BMI
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- js link -->
+    <script src="./main.js"></script>
+  </body>
+</html>
