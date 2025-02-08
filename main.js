@@ -1,5 +1,4 @@
 // all selected element
-
 // progress bar elements
 const progressBarContainer = document.querySelector(".progress-bar-container");
 const progressCircle = document.querySelector(".progress-circle");
@@ -10,8 +9,7 @@ const toggleBtn = document.querySelector(".toggle-btn");
 const toggleCircle = document.querySelector(".toggle-circle");
 
 // height progress bar funcitonality
-let initialValue = 80;
-heightDisplay.value = initialValue;
+let initialValue = 75;
 let isDraggable = false;
 const minValue = 50;
 const maxValue = 300;
@@ -20,8 +18,8 @@ const range = 250;
 // initial value of progress bar
 function barInitialValue(initialValue) {
   heightDisplay.value = parseInt(initialValue);
-  console.log(typeof initialValue);
 }
+barInitialValue(initialValue);
 
 progressBarContainer.addEventListener("mousedown", (e) => {
   isDraggable = true;
@@ -35,10 +33,11 @@ progressBarContainer.addEventListener("mousedown", (e) => {
   });
 });
 
+// update funtion according to mouse event
 function updateProgressBar(e) {
   if (!isDraggable) return;
   const rect = progressBarContainer.getBoundingClientRect();
-  const barLeft = rect.left; //
+  const barLeft = rect.left;
   const barContainerWidth = rect.width;
   const clientX = e.clientX;
   const barCircleLeftSpace = clientX - barLeft;
@@ -53,10 +52,12 @@ function updateProgressBar(e) {
 
   progressCircle.style.width = `${progressCircleWidth}%`;
 
-  //   set the value of height display as bar value changes
+  // The width of progressCircle is relative to barContainer width in percentage.
+  // And here, progressCircle is relative to the total cm range instead of barContainer,
+  // because barContainer's full width actually contains the full cm range, like 20%
+  // of the total range, as before we did, 20% of total barContainer width.
+  //set the value of height display as bar value changes
   initialValue = minValue + range * (progressCircleWidth / 100);
-
-  //   initialValue = minValue + (range / barContainerWidth) * barCircleLeftSpace; // need to work with this formula
 
   barInitialValue(initialValue);
 }
@@ -67,3 +68,5 @@ toggleBtn.addEventListener("click", (e) => {
   toggleCircle.classList.toggle("ml-[calc(100%-40px)]");
   toggleCircle.classList.toggle("female");
 });
+
+// BMI functionality
