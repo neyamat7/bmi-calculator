@@ -32,7 +32,7 @@
     >
       <!-- input section  -->
       <section
-        class="bg-[#F4F3FF] max-w-[400px] p-5 rounded-3xl pt-10 min-h-[785px]"
+        class="bg-[#F4F3FF] max-w-[400px] p-5 rounded-3xl pt-10 min-h-[785px] select-none"
       >
         <h1 class="text-center text-2xl mb-8">BMI CALCULATOR</h1>
 
@@ -46,7 +46,7 @@
               <p class="text-base">Age</p>
               <div>
                 <input
-                  class="text-5xl text-main font-bold text-center w-full border-none outline-none"
+                  class="text-5xl text-main font-bold text-center w-full border-none outline-none age"
                   placeholder="0"
                   type="text"
                   value="30"
@@ -56,11 +56,11 @@
                 class="text-3xl font-bold flex justify-between gap-8 items-center text-light"
               >
                 <span
-                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full cursor-pointer decrease-age"
                   >-</span
                 >
                 <span
-                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full cursor-pointer increase-age"
                   >+</span
                 >
               </div>
@@ -73,7 +73,7 @@
               <p class="text-base">Weight (KG)</p>
               <div>
                 <input
-                  class="text-5xl text-main font-bold text-center w-full border-none outline-none"
+                  class="weight text-5xl text-main font-bold text-center w-full border-none outline-none"
                   placeholder="0"
                   type="text"
                   value="78"
@@ -83,11 +83,11 @@
                 class="text-3xl font-bold flex justify-between gap-8 items-center text-light"
               >
                 <span
-                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full decrease-weight cursor-pointer"
                   >-</span
                 >
                 <span
-                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full"
+                  class="bg-secondary p-1 w-8 h-8 flex justify-center items-center rounded-full cursor-pointer increase-weight"
                   >+</span
                 >
               </div>
@@ -140,7 +140,7 @@
 
           <!-- submit button -->
           <button
-            class="btn bg-main text-light text-xl rounded-full w-full py-5 mb-0s"
+            class="submit btn bg-main text-light text-xl rounded-full w-full py-5 mb-0s hover:bg-[#5951ee] transition-all duration-300"
           >
             Calculate BMI
           </button>
@@ -148,7 +148,6 @@
       </section>
 
       <!-- result section -->
-
       <section
         class="bg-[#F4F3FF] max-w-[400px] w-full p-5 rounded-3xl pt-10 min-h-[785px]"
       >
@@ -162,23 +161,24 @@
             class="w-full bg-light flex flex-col p-6 rounded-xl text-center space-y-4"
           >
             <h3 class="text-4xl">BMI Results</h3>
-            <h1 class="text-9xl text-main font-bold">
-              22<span class="text-4xl font-medium">.54</span>
+            <h1 class="text-main">
+              <span class="result text-9xl text-main font-bold">22</span>
+              <span class="result-fraction text-4xl font-medium">.54</span>
             </h1>
 
-            <h3 class="text-3xl">NORMAL BMI</h3>
+            <h3 class="text-3xl bmi-result-show text-green-500">NORMAL BMI</h3>
 
             <div class="flex flex-col text-lg">
-              <small>Underweight: BMI less than 18.5</small>
-              <small>Normal weight: BMI 18.5 to 24.9</small>
-              <small>Overweight: BMI 25 to 29.9</small>
-              <small>Obesity: 30 to 40</small>
+              <small class="underweight">Underweight: BMI less than 18.5</small>
+              <small class="normal">Normal weight: BMI 18.5 to 24.9</small>
+              <small class="overweight">Overweight: BMI 25 to 29.9</small>
+              <small class="obesity">Obesity: 30 to 40</small>
             </div>
           </div>
 
           <!-- submit button -->
           <button
-            class="btn bg-main text-light text-xl rounded-full w-full py-5 mt-5"
+            class="btn bg-main text-light text-xl rounded-full w-full py-5 mt-5 hover:bg-[#5951ee] transition-all duration-300"
           >
             Save the results
           </button>

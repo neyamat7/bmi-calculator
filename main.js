@@ -70,3 +70,114 @@ toggleBtn.addEventListener("click", (e) => {
 });
 
 // BMI functionality
+let weight = document.querySelector(".weight");
+const height = document.querySelector(".height-display");
+const submitBtn = document.querySelector(".submit");
+const result = document.querySelector(".result");
+const resultFraction = document.querySelector(".result-fraction");
+
+// change the age and weight click event handler
+const increaseAge = document.querySelector(".increase-age");
+const decreaseAge = document.querySelector(".decrease-age");
+let ageInput = document.querySelector(".age");
+
+const increaseWeight = document.querySelector(".increase-weight");
+const decreaseWeight = document.querySelector(".decrease-weight");
+
+// increase value
+function increaseValue(clickButton, increaseElement) {
+  clickButton.addEventListener("click", () => {
+    let inputValue = Number(increaseElement.value);
+    inputValue++;
+    increaseElement.value = inputValue;
+  });
+}
+
+function decreaseValue(clickButton, increaseElement) {
+  clickButton.addEventListener("click", () => {
+    let inputValue = Number(increaseElement.value);
+    inputValue--;
+    increaseElement.value = inputValue;
+  });
+}
+
+// age increase and decrease
+increaseValue(increaseAge, ageInput);
+decreaseValue(decreaseAge, ageInput);
+
+// weight increase and decrease
+increaseValue(increaseWeight, weight);
+decreaseValue(decreaseWeight, weight);
+
+// increase age
+// increaseAge.addEventListener("click", () => {
+//   let ageInput = document.querySelector(".age");
+//   let ageValue = Number(ageInput.value);
+//   ageValue++;
+//   ageInput.value = ageValue;
+// });
+
+// // decrease age
+// decreaseAge.addEventListener("click", () => {
+//   let ageInput = document.querySelector(".age");
+//   let ageValue = Number(ageInput.value);
+//   ageValue--;
+//   ageInput.value = ageValue;
+// });
+
+// // increase the weight value
+// increaseWeight.addEventListener("click", () => {
+//   let weightValue = Number(weight.value);
+//   weightValue++;
+//   weight.value = weightValue;
+// });
+
+// // decrease the weight value
+// decreaseWeight.addEventListener("click", () => {
+//   let weightValue = Number(weight.value);
+//   weightValue--;
+//   weight.value = weightValue;
+// });
+
+// bmi calculation functions
+function bmiCalculation(weight, height) {
+  let bmi = 0;
+  //convert height into metre
+  height = height / 100;
+  // apply bmi formula
+  bmi = (weight / (height * height)).toFixed(2);
+  if (bmi.includes(".")) {
+    const decimalIndex = bmi.indexOf(".");
+    //slice the int value from string
+    const intValue = bmi.slice(0, decimalIndex);
+    result.textContent = intValue;
+    // slice the fraction value from string
+    let fractionValue = bmi.slice(decimalIndex);
+    resultFraction.textContent = fractionValue;
+  }
+  // return the bmi
+  return bmi;
+}
+
+// submit event handler
+submitBtn.addEventListener("click", () => {
+  let bmi = bmiCalculation(Number(weight.value), Number(height.value));
+  // convert into number
+  bmi = Number(bmi);
+
+  // check bmi value to change color and size of related text
+  let bmiStatus = document.querySelector(".bmi-result-show");
+  if (bmi < 18.5) {
+    bmiStatus.textContent = "Underweight";
+    bmiStatus.style.color = "red";
+  } else if (bmi >= 18.5 && bmi < 25) {
+    bmiStatus.textContent = "Normal";
+    bmiStatus.style.color = "green";
+  } else if (bmi >= 29 && bmi < 30) {
+    bmiStatus.textContent = "Overweight";
+    bmiStatus.style.color = "red";
+  } else if (bmi > 30) {
+    bmiStatus.textContent = "Obesity";
+    bmiStatus.style.color = "red";
+  }
+});
